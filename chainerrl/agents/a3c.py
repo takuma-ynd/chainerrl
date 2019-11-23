@@ -119,7 +119,7 @@ class A3C(agent.AttributeSavingMixin, agent.AsyncAgent):
 
         # Thread specific model
         self.model = copy.deepcopy(self.shared_model)
-        async_.assert_params_not_shared(self.shared_model, self.model)
+        # async_.assert_params_not_shared(self.shared_model, self.model)
 
         self.optimizer = optimizer
 

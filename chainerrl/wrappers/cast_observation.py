@@ -27,7 +27,12 @@ class CastObservation(gym.ObservationWrapper):
 
     def observation(self, observation):
         self.original_observation = observation
-        return observation.astype(self.dtype, copy=False)
+
+        # HACK: when observation contains two different np array, astype don't work.
+        try:
+            return observation.astype(self.dtype, copy=False)
+        except AttributeError:
+            return observation
 
 
 class CastObservationToFloat32(CastObservation):
